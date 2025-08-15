@@ -1,0 +1,382 @@
+<!doctype html>
+
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Estúdio Lumina — Design Gráfico</title>
+  <meta name="description" content="Estúdio de design gráfico: identidade visual, social media, web e impressos." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --purple-900:#2b0b3a;
+      --purple-800:#3b0a45;
+      --purple-700:#5b21b6;
+      --purple-600:#6d28d9;
+      --purple-500:#7c3aed;
+      --yellow-400:#facc15;
+      --yellow-500:#eab308;
+      --text:#0f0f14;
+      --muted:#5b6070;
+      --bg:#ffffff;
+      --card:#0f0a1f;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(17, 12, 46, .08);
+    }/* Reset enxuto */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+
+/* Utilidades */
+.container{max-width:1150px;margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 1.1rem;border-radius:999px;border:2px solid transparent;font-weight:700;box-shadow:var(--shadow);transition:.2s ease}
+.btn-primary{background:var(--yellow-400);color:#1a1a1a}
+.btn-primary:hover{transform:translateY(-1px);background:var(--yellow-500)}
+.btn-ghost{background:transparent;border-color:rgba(255,255,255,.35);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
+.tag{display:inline-block;background:var(--yellow-400);color:#111;padding:.2rem .6rem;border-radius:999px;font-weight:700}
+
+/* Header */
+.skip{position:absolute;left:-9999px;top:auto}
+.site-header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #eee}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:.7rem;font-weight:800}
+.logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--purple-600),var(--purple-500));display:grid;place-items:center;color:#fff;font-weight:900;letter-spacing:.5px;box-shadow:var(--shadow)}
+.menu{display:flex;gap:1.2rem}
+.menu a{padding:.4rem .6rem;border-radius:10px;color:#333}
+.menu a:hover{background:#f6f6f9}
+
+/* Mobile nav (CSS-only) */
+#nav-toggle{display:none}
+.burger{display:none;cursor:pointer;border:1px solid #eee;padding:.4rem .55rem;border-radius:10px}
+.burger span{display:block;width:22px;height:2px;background:#222;margin:5px 0;border-radius:2px}
+
+@media (max-width: 860px){
+  .menu{position:fixed;inset:64px 0 auto 0;background:#fff;border-bottom:1px solid #eee;display:grid;gap:0}
+  .menu a{padding:1rem 1.2rem;border-radius:0}
+  .menu{transform:translateY(-120%);transition:.25s ease}
+  #nav-toggle:checked ~ nav .menu{transform:translateY(0)}
+  .burger{display:block}
+}
+
+/* Hero */
+.hero{position:relative;background:radial-gradient(1200px 600px at 80% -10%, rgba(250,204,21,.35), transparent 55%), linear-gradient(160deg,var(--purple-800),var(--purple-700));color:#fff;overflow:hidden}
+.hero .container{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding:72px 20px}
+.hero h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;margin:0 0 .8rem;font-weight:900}
+.hero p.lead{font-size:clamp(1rem,1.6vw,1.2rem);opacity:.95;margin:0 0 1.2rem}
+.hero-visual{position:relative}
+.poster{background:linear-gradient(145deg,#271038, #3d0e5a);border-radius:22px;padding:22px;box-shadow:0 30px 60px rgba(0,0,0,.25);}
+.poster .art{height:340px;border-radius:16px;background:
+  radial-gradient(80px 80px at 30% 25%, rgba(250,204,21,.45), transparent 60%),
+  radial-gradient(160px 120px at 70% 75%, rgba(124,58,237,.55), transparent 70%),
+  conic-gradient(from 210deg at 50% 50%, #fffb, #0000 25%, #fff3 50%, #0000 75%, #fffb 100%),
+  linear-gradient(135deg,#6d28d9 0%, #3b0a45 80%);
+  display:grid;place-items:center;color:#fff;font-weight:800;letter-spacing:.1em}
+.ring{position:absolute;inset:-22px;pointer-events:none;border-radius:26px;border:2px dashed rgba(250,204,21,.35)}
+
+@media (max-width: 980px){
+  .hero .container{grid-template-columns:1fr}
+  .hero-visual{order:-1}
+}
+
+/* Seções */
+section{padding:72px 0}
+.section-title{display:flex;align-items:center;gap:.6rem;margin-bottom:28px}
+.section-title h2{font-size:clamp(1.4rem,2.5vw,2rem);margin:0}
+.kicker{font-weight:800;letter-spacing:.08em;color:#6b6f80;text-transform:uppercase;font-size:.8rem}
+
+/* Serviços */
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+.service{grid-column:span 4;background:#fff;border:1px solid #eee;border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+.service h3{margin:.2rem 0 .3rem}
+.service p{color:var(--muted);margin:0}
+.icon{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--yellow-400),#fff);color:#111;font-weight:900;box-shadow:var(--shadow)}
+@media (max-width: 980px){.service{grid-column:span 6}}
+@media (max-width: 620px){.service{grid-column:span 12}}
+
+/* Portfólio */
+.portfolio{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.tile{grid-column:span 4;aspect-ratio:4/3;border-radius:18px;position:relative;overflow:hidden;box-shadow:var(--shadow);background:#12071b}
+.tile::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(120px 100px at 30% 25%, rgba(250,204,21,.45), transparent 60%),
+  radial-gradient(160px 120px at 70% 75%, rgba(124,58,237,.45), transparent 70%),
+  linear-gradient(135deg, #5b21b6, #3b0a45);
+  filter:saturate(1.2)}
+.tile span{position:absolute;bottom:10px;left:12px;background:rgba(255,255,255,.9);color:#111;border-radius:10px;padding:.25rem .55rem;font-weight:700}
+@media (max-width: 980px){.tile{grid-column:span 6}}
+@media (max-width: 620px){.tile{grid-column:span 12}}
+
+/* Depoimentos */
+.testi{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+.quote{grid-column:span 6;background:#fff;border:1px solid #eee;border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+.quote p{margin:0 0 .8rem;color:#30313a}
+.quote .who{display:flex;align-items:center;gap:.8rem;color:var(--muted)}
+.avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--purple-600),var(--purple-500));}
+@media (max-width: 980px){.quote{grid-column:span 12}}
+
+/* Preços */
+.plans{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+.plan{grid-column:span 4;background:#fff;border:1px solid #eee;border-radius:var(--radius);padding:26px;box-shadow:var(--shadow);position:relative}
+.plan.highlight{border-color:var(--purple-600);box-shadow:0 15px 30px rgba(109,40,217,.18)}
+.price{font-size:2rem;font-weight:900}
+.plan ul{padding-left:1.1rem;margin:.6rem 0 1.2rem}
+.plan li{margin:.3rem 0;color:#353849}
+@media (max-width: 980px){.plan{grid-column:span 12}}
+
+/* Contato */
+form{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.field{display:flex;flex-direction:column;gap:.4rem}
+label{font-weight:600}
+input,textarea{border:1px solid #ddd;border-radius:12px;padding:.8rem .9rem}
+textarea{min-height:140px;resize:vertical}
+form .full{grid-column:1/-1}
+
+/* Footer */
+footer{background:#0f0a1f;color:#cfd1dc}
+.footer-top{padding:48px 0}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px}
+.footer-grid a{color:#e5e7eb}
+.social{display:flex;gap:.6rem;margin-top:.6rem}
+.social a{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--purple-600),var(--purple-500))}
+.copyright{border-top:1px solid rgba(255,255,255,.08);padding:14px 0;color:#9aa0b4}
+
+@media (max-width: 900px){
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width: 560px){
+  .footer-grid{grid-template-columns:1fr}
+}
+
+/* Acessibilidade */
+:focus-visible{outline:3px solid var(--yellow-400);outline-offset:2px}
+
+  </style>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>  <!-- Header -->  <input type="checkbox" id="nav-toggle" />
+  <header class="site-header">
+    <nav class="container nav" aria-label="Principal">
+      <a href="#home" class="brand">
+        <span class="logo" aria-hidden>DG</span>
+        <span>Estúdio Lumina</span>
+      </a>
+      <label class="burger" for="nav-toggle" aria-label="Abrir/fechar menu" aria-controls="menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </label>
+      <div id="menu" class="menu">
+        <a href="#servicos">Serviços</a>
+        <a href="#portfolio">Portfólio</a>
+        <a href="#precos">Preços</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </nav>
+  </header>  <!-- Hero -->  <section id="home" class="hero">
+    <div class="container">
+      <div>
+        <span class="tag">Roxo + Amarelo, alto contraste</span>
+        <h1>Design que grita presença — identidades visuais que ficam na memória.</h1>
+        <p class="lead">Branding, social media, web e impressos. Projetos autorais com estratégia, tipografia afiada e cor que trabalha por você.</p>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+          <a class="btn btn-primary" href="#contato">Solicitar orçamento</a>
+          <a class="btn btn-ghost" href="#portfolio">Ver portfólio</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden>
+        <div class="poster">
+          <div class="ring"></div>
+          <div class="art">LUMINA®</div>
+        </div>
+      </div>
+    </div>
+  </section>  <main id="conteudo">
+    <!-- Serviços -->
+    <section id="servicos">
+      <div class="container">
+        <div class="section-title">
+          <span class="kicker">O que fazemos</span>
+          <h2>Serviços</h2>
+        </div>
+        <div class="grid">
+          <article class="service">
+            <div class="icon">ID</div>
+            <h3>Identidade Visual</h3>
+            <p>Naming, logotipos, guias de marca e sistemas modulares prontos para escalar.</p>
+          </article>
+          <article class="service">
+            <div class="icon">SM</div>
+            <h3>Social Media</h3>
+            <p>Layouts para feed e stories com kits reutilizáveis que mantêm consistência.</p>
+          </article>
+          <article class="service">
+            <div class="icon">WB</div>
+            <h3>Web Design</h3>
+            <p>Landing pages e sites completos focados em conversão e performance.</p>
+          </article>
+        </div>
+      </div>
+    </section><!-- Portfólio visual -->
+<section id="portfolio">
+  <div class="container">
+    <div class="section-title">
+      <span class="kicker">Trabalho em destaque</span>
+      <h2>Portfólio</h2>
+    </div>
+    <div class="portfolio">
+      <figure class="tile"><span>Identidade — Nebula</span></figure>
+      <figure class="tile"><span>Campanha — Solar</span></figure>
+      <figure class="tile"><span>Packaging — Bloom</span></figure>
+      <figure class="tile"><span>Website — Orion</span></figure>
+      <figure class="tile"><span>Editorial — Wave</span></figure>
+      <figure class="tile"><span>Poster Series — Flux</span></figure>
+    </div>
+  </div>
+</section>
+
+<!-- Depoimentos -->
+<section id="depoimentos">
+  <div class="container">
+    <div class="section-title">
+      <span class="kicker">Prova social</span>
+      <h2>Depoimentos</h2>
+    </div>
+    <div class="testi">
+      <article class="quote">
+        <p>“Entrega impecável. A marca ganhou vida e nossas conversões subiram já no primeiro mês.”</p>
+        <div class="who"><div class="avatar"></div> <span>Ana Souza — Loja Aurora</span></div>
+      </article>
+      <article class="quote">
+        <p>“Rápidos, estratégicos e com olhar artístico. Viraram parceiros fixos do nosso time.”</p>
+        <div class="who"><div class="avatar"></div> <span>Marcos Lima — Estúdio Vértice</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Preços / Planos -->
+<section id="precos">
+  <div class="container">
+    <div class="section-title">
+      <span class="kicker">Planos</span>
+      <h2>Pacotes</h2>
+    </div>
+    <div class="plans">
+      <article class="plan">
+        <h3>Start</h3>
+        <div class="price">R$ 1.490</div>
+        <ul>
+          <li>Logo + cores + tipografia</li>
+          <li>Até 2 aplicações</li>
+          <li>1 rodada de ajustes</li>
+        </ul>
+        <a class="btn btn-primary" href="#contato">Quero este</a>
+      </article>
+      <article class="plan highlight">
+        <span class="tag" style="position:absolute;right:16px;top:16px">Popular</span>
+        <h3>Pro</h3>
+        <div class="price">R$ 3.490</div>
+        <ul>
+          <li>Identidade completa + kit social</li>
+          <li>Manual de marca</li>
+          <li>3 rodadas de ajustes</li>
+        </ul>
+        <a class="btn btn-primary" href="#contato">Quero este</a>
+      </article>
+      <article class="plan">
+        <h3>Studio</h3>
+        <div class="price">R$ 6.990</div>
+        <ul>
+          <li>Branding + website 1 página</li>
+          <li>Material impresso</li>
+          <li>Suporte 60 dias</li>
+        </ul>
+        <a class="btn btn-primary" href="#contato">Quero este</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Contato -->
+<section id="contato">
+  <div class="container">
+    <div class="section-title">
+      <span class="kicker">Vamos conversar</span>
+      <h2>Contato</h2>
+    </div>
+    <form action="#" method="post">
+      <div class="field">
+        <label for="nome">Nome</label>
+        <input id="nome" name="nome" type="text" placeholder="Seu nome" required>
+      </div>
+      <div class="field">
+        <label for="email">E-mail</label>
+        <input id="email" name="email" type="email" placeholder="voce@exemplo.com" required>
+      </div>
+      <div class="field full">
+        <label for="mensagem">Mensagem</label>
+        <textarea id="mensagem" name="mensagem" placeholder="Conte sobre o seu projeto" required></textarea>
+      </div>
+      <div class="field full">
+        <button class="btn btn-primary" type="submit">Enviar</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+  </main>  <!-- Footer -->  <footer>
+    <div class="footer-top">
+      <div class="container footer-grid">
+        <div>
+          <div class="brand" style="color:#fff"><span class="logo" aria-hidden>DG</span><span>Estúdio Lumina</span></div>
+          <p style="max-width:38ch;color:#cfd1dc">Design gráfico com estratégia: marcas fortes, layouts memoráveis e conversão no centro.</p>
+          <div class="social" aria-label="Redes sociais">
+            <a href="#" aria-label="Instagram" title="Instagram">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Z" stroke="#fff" stroke-width="1.5"/><circle cx="12" cy="12" r="3.5" stroke="#fff" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="#fff"/></svg>
+            </a>
+            <a href="#" aria-label="YouTube" title="YouTube">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="3" stroke="#fff" stroke-width="1.5"></rect><path d="M10 9v6l5-3-5-3Z" fill="#fff"></path></svg>
+            </a>
+            <a href="#" aria-label="Behance" title="Behance">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h5a3 3 0 0 1 0 6H4V7Zm0 6h5.2A2.8 2.8 0 0 1 7 16.7 2.7 2.7 0 0 1 4 19H3v-6h1Zm11-3.8h5.8M14 17a3 3 0 1 0 6 0 3 3 0 0 0-6 0Z" stroke="#fff" stroke-width="1.5"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4>Empresa</h4>
+          <ul style="list-style:none;padding:0;margin:.6rem 0 0;display:grid;gap:.4rem">
+            <li><a href="#home">Início</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#portfolio">Portfólio</a></li>
+            <li><a href="#precos">Preços</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Suporte</h4>
+          <ul style="list-style:none;padding:0;margin:.6rem 0 0;display:grid;gap:.4rem">
+            <li><a href="#contato">Contato</a></li>
+            <li><a href="#">Perguntas frequentes</a></li>
+            <li><a href="#">Política de privacidade</a></li>
+            <li><a href="#">Termos de uso</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contato</h4>
+          <ul style="list-style:none;padding:0;margin:.6rem 0 0;display:grid;gap:.4rem">
+            <li>contato@lumina.design</li>
+            <li>+55 21 99999-9999</li>
+            <li>Rio de Janeiro — RJ</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <div class="container">© 2025 Estúdio Lumina. Todos os direitos reservados.</div>
+    </div>
+  </footer>
+</body>
+</html>
